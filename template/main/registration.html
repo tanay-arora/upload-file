@@ -1,0 +1,640 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]>
+<!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+    <!-- Basic Page Needs
+	================================================== -->
+    <meta charset="utf-8">
+    <title>Effectus 2022 | E-Cell Chandigarh University</title>
+    <meta name="description" content="Event Template" />
+    <meta name="author" content="IG Design">
+    <meta name="keywords" content="ig design, website, design, html5, css3, jquery, creative, clean, animated, portfolio, blog, one-page, multi-page, corporate, business," />
+    <meta property="og:title" content="Event Template" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:image:width" content="470" />
+    <meta property="og:image:height" content="246" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:description" content="Event Template" />
+    <meta name="twitter:card" content="" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:domain" content="http://ivang-design.com/" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="Event Template" />
+    <meta name="twitter:image" content="http://ivang-design.com/" />
+
+    <!-- Mobile Specific Metas
+	================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="#212121" />
+    <meta name="msapplication-navbutton-color" content="#212121" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#212121" />
+
+    <!-- Web Fonts 
+	================================================== -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Pinyon+Script" rel="stylesheet">
+
+    <!-- CSS
+	================================================== -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.webui-popover.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.fancybox.min.css' %}" />
+
+    <!-- Favicons - change it later for apple icon
+	================================================== 
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">-->
+    <style>
+        ul.countdown li span{
+            background: -webkit-linear-gradient(transparent, transparent), url({% static 'assets/img/let.jpg' %}) repeat;
+            -webkit-text-fill-color: transparent;
+            background: -o-linear-gradient(transparent, transparent);
+            -webkit-background-clip: text;
+            background-position: center center;
+            background-size: cover;
+            transition: all 300ms linear;
+        }
+        .location-fixed p:before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            background-position: left center;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            background-image: url({% static 'assets/img/pin.svg' %});
+            width: 20px;
+            height: 20px;
+            z-index: 1;
+            transform: rotate(90deg);
+        }
+        .content__close:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 1;
+            background-image: url({% static 'assets/img/arrow.svg' %});
+            background-size: 48px 48px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            -webkit-transition: all 200ms linear;
+            transition: all 200ms linear;
+        }
+        .content__close:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            background-image: url({% static 'assets/img/arrow.svg' %});
+            background-size: 48px 48px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            -webkit-transition: all 200ms linear;
+            transition: all 200ms linear;
+        }
+        .schedule-place p:before,
+        .schedule-time p:before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            background-position: left center;
+            background-repeat: no-repeat;
+            background-size: 24px 24px;
+            background-image: url({% static 'assets/img/time.svg' %});
+            width: 24px;
+            height: 24px;
+            z-index: 1;
+        }
+        .schedule-place p:before {
+            background-image: url({% static 'assets/img/pin.svg' %});
+        }
+        .pass-wrap p em {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 20px;
+            height: 100%;
+            background-image: url({% static 'assets/img/yes.svg' %});
+            background-size: 18px 18px;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        
+        .pass-wrap p em.no {
+            background-image: url({% static 'assets/img/no.svg' %});
+        }
+        .gallery:after {
+            position: absolute;
+            display: block;
+            content: '';
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .6);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 26px 26px;
+            background-image: url({% static 'assets/img/gallery.svg' %});
+            opacity: 0;
+            -webkit-transition: all 300ms linear;
+            transition: all 300ms linear;
+        }
+    </style>
+    <script>
+        document.documentElement.className = "js";
+        var supportsCssVars = function() {
+            var e, t = document.createElement("style");
+            return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e
+        };
+        supportsCssVars();
+    </script>
+
+</head>
+
+<body class="aoide noscroll">
+    <div class="loader">
+        <div class="loader__figure"></div>
+    </div>
+
+    <main style="background-color:rgba(42,42,42,1)">
+
+        <!-- Nav and Logo
+			================================================== -->
+
+        <a href="/">
+            <div style="margin-left:-12px;" class="logo">
+                <img style="height:38px;" src="{% static 'assets/img/main-logo.svg' %}" alt="">
+            </div>
+        </a>
+
+        <div class="section padding-top padding-bottom-big">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mt-3" style="margin-left: auto;margin-right:auto">
+                        <h4> EFFECTUS E-SUMMIT '22 - Tickets</h4>
+                        <div class="title-page-line mt-4 mb-5"></div>
+                    </div>
+                            {% for val in tickets %}
+                            <div class="col-lg-4 mt-4 mt-lg-0 mb-4">
+                                <div class="col-lg-12 mb-4">
+                                    <h6>{{val.title}}</h6>
+                                </div>
+                                <div style="{% if val.slug == selected %}background-color:#0b9ed8{% endif %}" class="pass-wrap">
+                                    <p class="pl-0">{{val.description}}</p>
+                                    {% for li in val.features.all %}<p class="mt-2"><em></em> {{li.title}}</p>{% endfor %}
+                                    {% for li in val.not_available.all %}<p style="text-decoration:line-through" class="mt-2"><em class="no"></em> {{li.title}}</p>{% endfor %}
+                                    <p class="mb-5 mb-sm-5"></p>
+                                    <a class="btn-pass-{{ forloop.counter }}" style='font-variant:small-caps;font-weight:500;font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;' href="/register/{{val.slug}}">{% if val.slug == selected %}SELECTED{% else %} SELECT THIS TICKET {% endif %} - ₹{{val.cost}}</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                        <div class="col-md-12 mt-3" style="margin-left: auto;margin-right:auto">
+                            <h4> EFFECTUS E-SUMMIT '22 - Registration</h4>
+                            <div class="title-page-line mt-4 mb-5"></div>
+                        </div>
+                    <div class="col-lg-10 mt-4 mt-lg-0" style="margin:0 auto">
+                        <form class="ajax-form-submit" name="registration_form" id="registration_form" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                              <!--  <div class="col-lg-12">
+                                    <select style="cursor:pointer" name="rtype" id="rtype"/>
+                                        <option style="color:#484848;font-weight:500;font-size:14px;line-height:24px;" selected disabled>-- Select your Category --</option>
+                                        <option style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">Attende</option>
+                                        <option style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">Startup</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                            <div class="col-md-12 mt-0" style="margin-left: auto;margin-right:auto">
+                                <h5>Company Info</h5>
+                                <div class="title-page-line mt-4 mb-1"></div>
+                            </div>
+                            <div class="col-lg-6 mt-4 mr-b-no">
+                                <label for="rcompany_name"> 
+                                        <b>Name of the Startup: *</b>
+                                    </label>
+                                <input name="rcompany_name" onfocusout="check_raise(this)" id="rcompany_name" type="text" />
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span style="margin-top:-10px" class="error" id="err-rcompany_name">please enter your Startup name.</span>        
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 mr-b-no">
+                                <label for="roffice_location"> 
+                                        <b>Company Office location: </b>
+                                    </label>
+                                <input name="roffice_location" onfocusout="check_raise(this)" id="roffice_location" type="text" />
+                                <div class="subscribe-text" style="margin-top:-8px"> 
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 mr-b-no">
+                                <label for="rtotal_employees"> 
+                                        <b>Number of employees: * </b>
+                                    </label>
+                                <input name="rtotal_employees" onfocusout="check_raise(this)" id="rtotal_employees" type="text" />
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rtotal_employees">please enter number of employees in your company.</span>        
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 mr-b-no">
+                                <label for="rwebsite_url"> 
+                                        <b>Website url: </b>
+                                    </label>
+                                <input name="rwebsite_url" onfocusout="check_raise(this)" id="rwebsite_url" type="text" />
+                            </div>
+                            <div class="col-lg-6 mt-4 mr-b-no">
+                                <label for="rcompany_category"> 
+                                        <b>Company Category: </b>
+                                    </label>
+                                <input name="rcompany_category" onfocusout="check_raise(this)" id="rcompany_category" type="text" />
+                            </div>
+                            <div class="col-lg-6 mt-4 mr-b-no">
+                                <label for="rindustry"> 
+                                        <b>Industry: </b>
+                                    </label>
+                                <input name="rindustry" onfocusout="check_raise(this)" id="rindustry" type="text" />
+                            </div>
+                            <div class="col-lg-6 mt-4" style="overflow:hidden">
+                                <label for="rpitchbook"> 
+                                        <b>Pitchbook/crunchbase file: </b>
+                                    </label>
+                                <div style="overflow:hidden">
+                                <input style="cursor:pointer;color:white;margin:0;padding:2.5px 0;margin-left:-90px;width:calc(100% + 90px)" name="rpitchbook" id="rpitchbook" type="file" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 ">
+                                <label for="rwhere_you_know"> 
+                                    <b>How did you hear about Effectus E-Summit '22? *</b>
+                                </label>
+                                <select style="cursor:pointer" name="rwhere_you_know" id="rwhere_you_know"/>
+                                    <option style="color:#484848;font-weight:500;font-size:14px;line-height:24px;" selected disabled>-- Select an option --</option>
+                                    <option value="0" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">effectus.cutbi.in</option>
+                                    <option value="1" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">Chandigarh University Alumni</option>
+                                    <option value="2" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">Investor</option>
+                                    <option value="3" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">Social Media</option>
+                                    <option value="4" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">Accelerator/Incubator</option>
+                                    <option value="5" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">Email from Effectus E-Summit '22</option>
+                                    <option value="6" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">Friend/Advisor</option>
+                                    <option value="7" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">Other</option>
+                                </select>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rwhere_you_know">please select an option</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 ">
+                                <label for="rshowcasing_product"> 
+                                    <b>Would you be interested in showcasing your product in Effectus E-Summit '22? * </b>
+                                </label>
+                                <select style="cursor:pointer" name="rshowcasing_product" id="rshowcasing_product"/>
+                                    <option style="color:#484848;font-weight:500;font-size:14px;line-height:24px;" selected disabled>-- Select an option --</option>
+                                    <option value="1" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">yes</option>
+                                    <option value="0" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">no</option>
+                                </select>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rshowcasing_product">please select an option</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 ">
+                                <label for="rcu_passout"> 
+                                    <b>Are you (or any Co-founder) an Chandigarh University student/alumnus? *</b>
+                                </label>
+                                <select style="cursor:pointer" name="rcu_passout" id="rcu_passout"/>
+                                    <option style="color:#484848;font-weight:500;font-size:14px;line-height:24px;" selected disabled>-- Select an option --</option>
+                                    <option value="1" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">yes</option>
+                                    <option value="0" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">no</option>
+                                </select>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rcu_passout">please select an option</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 ">
+                                <label for="rhiring_interns"> 
+                                    <b>Would you be interested in hiring interns during Effectus E-Summit '22? *</b>
+                                </label>
+                                <select style="cursor:pointer" name="rhiring_interns" id="rhiring_interns"/>
+                                    <option style="color:#484848;font-weight:500;font-size:14px;line-height:24px;" selected disabled>-- Select an option --</option>
+                                    <option value="1" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">yes</option>
+                                    <option value="0" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">no</option>
+                                </select>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rhiring_interns">please select an option</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 ">
+                                <label for="rhiring_professionals"> 
+                                    <b>Would you be interested in hiring for full time roles during Effectus E-Summit '22? *</b>
+                                </label>
+                                <select style="cursor:pointer" name="rhiring_professionals" id="rhiring_professionals"/>
+                                    <option style="color:#484848;font-weight:500;font-size:14px;line-height:24px;" selected disabled>-- Select an option --</option>
+                                    <option value="1" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">yes</option>
+                                    <option value="0" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">no</option>
+                                </select>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rhiring_professionals">please select an option</span>
+                                </div>
+                            </div>
+                            <!-- pitchbook upload -->
+                            <div class="col-md-12 mt-5" style="margin-left: auto;margin-right:auto">
+                                <h5>Startup Details</h5>
+                                <div class="title-page-line mt-4 mb-1"></div>
+                            </div>
+                            <div class="col-lg-12 mt-3 mr-b-no">
+                                <label for="rdescribe_one_sentence"> 
+                                        <b>In one sentence what are you building? * </b>
+                                    </label>
+                                <textarea name="rdescribe_one_sentence" rows="2" style="height:auto" onfocusout="check_raise(this)" id="rdescribe_one_sentence" type="text"></textarea>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rdescribe_one_sentence">please enter what are you building.</span>        
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-3 mr-b-no">
+                                <label for="rcore_problem"> 
+                                        <b>What core problem do you solve? * </b>
+                                    </label>
+                                <textarea name="rcore_problem" rows="2" style="height:auto" onfocusout="check_raise(this)" id="rcore_problem" type="text" ></textarea>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rcore_problem">please enter what core problem you're solving.</span>        
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-3 mr-b-no">
+                                <label for="ruse_case"> 
+                                        <b>What is the primary use case for your product? </b>
+                                    </label>
+                                <textarea name="ruse_case" rows="2" style="height:auto" onfocusout="check_raise(this)" id="ruse_case" type="text" ></textarea>
+                                <div class="subscribe-text" style="margin-top:-8px"> 
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-3 mr-b-no">
+                                <label for="rtarget_audience"> 
+                                        <b>Who wants your product or service? </b>
+                                    </label>
+                                <textarea name="rtarget_audience" rows="2" style="height:auto" onfocusout="check_raise(this)" id="rtarget_audience" type="text" ></textarea>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-3 mr-b-no">
+                                <label for="rbusiness_model"> 
+                                        <b>How do you/will you make money? Business model.  </b>
+                                    </label>
+                                <textarea name="rbusiness_model" rows="2" style="height:auto" onfocusout="check_raise(this)" id="rbusiness_model" type="text" ></textarea>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <p>Include pricing model and pricing estimates where appropriate.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-3 mr-b-no">
+                                <label for="rbiggest_competitors"> 
+                                        <b> Who are your biggest competitors? * </b>
+                                    </label>
+                                <textarea name="rbiggest_competitors" rows="2" style="height:auto" onfocusout="check_raise(this)" id="rbiggest_competitors" type="text" ></textarea>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rbiggest_competitors">please enter your biggest competitors .</span>        
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-3 mr-b-no">
+                                <label for="rwhy_unique"> 
+                                        <b>Why will you win amongst your competition? What makes you unique? * </b>
+                                    </label>
+                                <textarea name="rwhy_unique" rows="2" style="height:auto" onfocusout="check_raise(this)" id="rwhy_unique" type="text" ></textarea>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rwhy_unique">please enter why you're unique .</span>        
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-3 mr-b-no">
+                                <label for="rraise_capital"> 
+                                        <b>Do you plan to raise capital? If so, what are the milestones you are planning to achieve? * </b>
+                                    </label>
+                                <textarea name="rraise_capital" rows="3" style="height:auto" onfocusout="check_raise(this)" id="rraise_capital" type="text" ></textarea>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rraise_capital">please enter data in this field .</span>        
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-3 mr-b-no">
+                                <label for="rvideo_url"> 
+                                        <b>Video Url  </b>
+                                    </label>
+                                <input name="rvideo_url" onfocusout="check_raise(this)" id="rvideo_url" type="text" />
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <p>Take a 2-minute video of your PRODUCT functioning. This can be done from a screen-share or a cellphone camera. Effectus does NOT want marketing quality videos - simply proof that your product works.</p>      
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-3 mr-b-no">
+                                <label for="rincubator_program"> 
+                                        <b>INCUBATOR/ACCELERATOR PROGRAM </b>
+                                    </label>
+                                <input name="rincubator_program" style="height:auto" onfocusout="check_raise(this)" id="rincubator_program" type="text" >
+                                <div class="subscribe-text" style="margin-top:-8px">   
+                                    <p>Separate each program using a comma.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 ">
+                                <label for="rhave_revenue"> 
+                                    <b>Do you have any revenue ? * </b>
+                                </label>
+                                <select style="cursor:pointer" name="rhave_revenue" id="rhave_revenue"/>
+                                    <option style="color:#484848;font-weight:500;font-size:14px;line-height:24px;" selected disabled>-- Select an option --</option>
+                                    <option value="1" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">yes</option>
+                                    <option value="0" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">no</option>
+                                </select>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rhave_revenue">please select an option</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 ">
+                                <label for="ris_proprietary"> 
+                                    <b>Is your product proprietary? *</b>
+                                </label>
+                                <select style="cursor:pointer" name="ris_proprietary" id="ris_proprietary"/>
+                                    <option style="color:#484848;font-weight:500;font-size:14px;line-height:24px;" selected disabled>-- Select an option --</option>
+                                    <option value="1" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">yes</option>
+                                    <option value="0" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">no</option>
+                                </select>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-ris_proprietary">please select an option</span>
+                                </div>
+                            </div>
+                        
+
+                            <div class="col-md-12 mt-5" style="margin-left: auto;margin-right:auto">
+                                <h5>Personal Info</h5>
+                                <div class="title-page-line mt-4 mb-1"></div>
+                            </div>
+                            <div class="col-lg-6 mt-4 mr-b-no">
+                                <label for="rname"> 
+                                        <b>Team representative's name: *</b>
+                                    </label>
+                                <input name="rname" onfocusout="check_raise(this)" id="rname" type="text" />
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                <span class="error" id="err-rname">please enter team representative's name</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 mr-b-no">
+                                <label for="remail"> 
+                                        <b>Team representative's email: *</b>
+                                    </label>
+                                <input name="remail" onfocusout="check_raise(this)" id="remail" type="email"  />
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-remail">please enter team representative's email</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 mr-b-no">
+                                <label for="rmobile"> 
+                                        <b>Team representative's mobile number: *</b>
+                                    </label>
+                                <input name="rmobile" onfocusout="check_raise(this)" id="rmobile" type="text"/>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rmobile">please enter team representative's mobile number</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 mr-b-no">
+                                <label class="label" for="rcountry"> 
+                                        <b>Country: *</b>
+                                    </label>
+                                <input name="rcountry" onfocusout="check_raise(this)" id="rcountry" type="text"/>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rcountry">please enter your country</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4">
+                                <label for="rsocial_links"> 
+                                    <b>Select your gender: *</b>
+                                </label>
+                                <select style="cursor:pointer" name="rgender" id="rgender"/>
+                                    <option style="color:#484848;font-weight:500;font-size:14px;line-height:24px;" selected disabled>-- Select an option --</option>
+                                    <option value="0" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">Male</option>
+                                    <option value="1" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">Female</option>
+                                    <option value="2" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">Others</option>
+                                </select>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rgender">please select your gender</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4">
+                                <label for="rtshirt_size"> 
+                                    <b>Select your T-Shirt size: *</b>
+                                </label>
+                                <select style="cursor:pointer" name="rtshirt_size" id="rtshirt_size"/>
+                                    <option style="color:#484848;font-weight:500;font-size:14px;line-height:24px;" selected disabled>-- Select an option --</option>
+                                    <option value="0" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">S</option>
+                                    <option value="1" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">M</option>
+                                    <option value="2" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">L</option>
+                                    <option value="3" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">XL</option>
+                                    <option value="4" style="color:#484848;font-weight:500;font-size:14px;line-height:24px;">XXL</option>
+                                </select>
+                                <div class="subscribe-text" style="margin-top:-8px">
+                                    <span class="error" id="err-rtshirt_size">please select your T-Shirt size</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 mr-b-no">
+                                <label for="rcollege"> 
+                                        <b>College: *</b>
+                                    </label>
+                                <input name="rcollege" onfocusout="check_raise(this)" id="rcollege" type="text"/>
+                                <div class="subscribe-text" style="margin-top:-8px">                                        
+                                    <span class="error" id="err-rcollege">please enter your college name</span>
+                                    <p>* Write last college name If graduate, 'No' if never attended college.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 mr-b-no">
+                                <label for="rlinkedin"> 
+                                        <b>LinkedIn profile url: *</b>
+                                    </label>
+                                <input name="rlinkedin" onfocusout="check_raise(this)" id="rlinkedin" type="text" />
+                                <div class="subscribe-text" style="margin-top:-8px">              
+                                    <span class="error" id="err-rlinkedin">please enter your linkedin profile url.</span>                  
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-4 mr-b-no">
+                                <label for="rsocial_links"> 
+                                        <b>Social links: </b>
+                                    </label>
+                                <input name="rsocial_links" onfocusout="check_raise(this)" id="rsocial_links" type="text" />
+                                <div class="subscribe-text" style="margin-top:-8px"> 
+                                    <p>* You can write multiple links separating by ',' commas .</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-2"></div>
+                            <div class="col-lg-12 mt-4">
+                                <button style="width:100%;text-align:center;border-radius:3px;padding:14px 0;box-shadow:0 6px 12px 0 rgba(24,24,24,0.2)" class="send_message" id="register_send" data-lang="en"><span>SUBMIT</span></button>
+                            </div>
+                            </div>
+                        </form>
+                        <div class="col-lg-12">
+                            <div class="error" id="err-form"><span>There was a problem validating the form please check!</span></div>
+                            <div class="error" id="err-timedout">The connection to the server timed out!</div>
+                            <div class="error" id="err-state"></div>
+                            <div class="error" style="color:white" id="success-state"></div>
+                        </div>
+                    </div>
+                    
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a hidden class="register__button" ></a>
+
+        <div hidden class="content">
+            <svg class="scene"></svg>
+        </div>
+
+
+        <div hidden class="content content--reveal">
+            <button hidden class="content__close"></button>
+        </div>
+
+
+        {{ footer | safe}}
+    </main>
+
+
+
+
+
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <script>
+        function check_raise(ev){
+            if(ev?.value?.trim()?.length > 0){
+                ev.parentNode.classList.remove("mr-b-no");
+                ev.parentNode.classList.add("ele-focused");
+            }else{
+                ev.parentNode.classList.add("mr-b-no");
+                ev.parentNode.classList.remove("ele-focused");
+            }
+        }
+    </script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/gradient-animation.js' %}"></script>
+    <script src="{% static 'assets/js/register.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <!-- End Document
+================================================== -->
+</body>
+
+</html>
